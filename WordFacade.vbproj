@@ -1,0 +1,27 @@
+﻿<!-- Use <VBRuntime>Default</VBRuntime> option - https://github.com/dotnet/roslyn/issues/28021 -->
+
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>WordFacade</RootNamespace>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <OptionStrict>Off</OptionStrict>
+    <VBRuntime>Default</VBRuntime>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Jon Saffron</Authors>
+    <Company>J Saffron Consulting Ltd</Company>
+    <Description>A basic facade for Microsoft Word.</Description>
+    <PackageReleaseNotes>I originally wrote this for a project some years ago. It doesn't cover everything that can be done with Word, but it does cover a lot of the essentials. Other ways of automating Word are available!</PackageReleaseNotes>
+    <Copyright>Jon Saffron 2008-2019</Copyright>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+    <WarningsAsErrors></WarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+    <WarningsAsErrors></WarningsAsErrors>
+  </PropertyGroup>
+
+</Project>
