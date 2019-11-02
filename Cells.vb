@@ -34,13 +34,6 @@ Public Class Cells
 
 #Region " IEnumerable implementation"
     Public Function GetEnumeratorOfCell() As System.Collections.Generic.IEnumerator(Of Cell) Implements System.Collections.Generic.IEnumerable(Of Cell).GetEnumerator
-        Me._collection = New List(Of Cell)(Me.Count)
-        For i As Integer = 1 To Me.Count
-            Call Me._collection.Add(Nothing)
-        Next
-        'For Each cell As Object In Me._cells
-        '    Me._collection.Add(New Cell(cell))
-        'Next
         Return Me
     End Function
 
@@ -50,20 +43,12 @@ Public Class Cells
 #End Region
 
 #Region " IEnumerator implementation"
-    Private _enumeratorPostion As Integer
+    Private _enumeratorPosition As Integer
     Private _collection As System.Collections.Generic.List(Of Cell)
 
     Public ReadOnly Property CurrentOfCell() As Cell Implements System.Collections.Generic.IEnumerator(Of Cell).Current
         Get
-            Dim Result As Cell = Me._collection.Item(Me._enumeratorPostion)
-            If Result Is Nothing Then
-                Result = New Cell(Me._cells.Item(Me._enumeratorPostion + 1))
-                Me._collection.Item(Me._enumeratorPostion) = Result
-            End If
-            Return Result
-
-
-            'Return New Cell(Me._collection.Item(Me._enumeratorPostion))
+            Return New Cell(Me._collection.Item(Me._enumeratorPosition))
         End Get
     End Property
 
@@ -74,12 +59,12 @@ Public Class Cells
     End Property
 
     Public Function MoveNext() As Boolean Implements System.Collections.IEnumerator.MoveNext
-        Me._enumeratorPostion += 1
-        Return (Me._enumeratorPostion < Me._collection.Count)
+        Me._enumeratorPosition += 1
+        Return (Me._enumeratorPosition < Me._collection.Count)
     End Function
 
     Public Sub Reset() Implements System.Collections.IEnumerator.Reset
-        Me._enumeratorPostion = -1
+        Me._enumeratorPosition = -1
         Me._collection = Nothing
     End Sub
 #End Region
